@@ -1,0 +1,5 @@
+pythonpath:
+/u/home2/mykphyre/lib/python::/u/local/lib/python/lib/python:/lib/python:/lib64/python
+
+path:
+/u/home2/mykphyre/bin:/u/local/sbin:/u/local/bin:/u/local/compilers/intel/11.1/046/bin/intel64:/usr/kerberos/bin:/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin

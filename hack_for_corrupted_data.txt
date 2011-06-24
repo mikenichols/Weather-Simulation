@@ -1,0 +1,22 @@
+// go through each timestep
+for (int timeStep = 0; timeStep < timeSize; timeStep++) {
+    long timeOffset = timeStep * recSize;
+    // go through each coordinate
+    for (int i = 0; i < recSize; i++) {
+        long totalOffset, recOffset = timeOffset + i;
+
+        // hack to make corrupt data file work
+        if ( fileNum == 29 && timeStep > 3 ) totalOffset = 3 * recSize + i;
+        else totalOffset = recOffset;
+
+        // accumulate the data
+        #ifndef PRECIPITATION_ONLY
+        snowpack[fileOffset + recOffset] = snowVals->as_float(totalOffset);
+        snowfall[fileOffset + recOffset] = snowncVals->as_float(totalOffset);
+        runoff[fileOffset + recOffset] = sfroffVals->as_float(totalOffset) + udroffVals->as_float(totalOffset);
+        #endif
+        precipitation[fileOffset + recOffset] = raincVals->as_float(totalOffset) + 
+	    rainncVals->as_float(totalOffset);
+        }
+    }
+}
